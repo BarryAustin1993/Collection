@@ -121,7 +121,7 @@ namespace CustomCollection_BuiltInListClass
             items.Add("value3");
             items.Add("value4");
             items.Add("value5");
-            int actual = collection.Count;
+            int actual = items.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
