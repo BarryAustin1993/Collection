@@ -40,7 +40,7 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
             items.Add("item1");
-            int actual = items.item1.index;
+            int actual = items[0].index;
             
             //Assert
             Assert.AreEqual(expected, actual);
@@ -54,7 +54,21 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
             items.Add("item1");
-            int actual = items.count;
+            int actual = items.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void AddItemsToCollection_FirstItem_CapacityFour()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            int expected = 4;
+
+            //Act
+            items.Add("value1");
+            int actual = items.capacity;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -64,7 +78,8 @@ namespace CustomCollection_BuiltInListClass
         {
             //Arange
             Collection<string> items = new Collection<string>();
-            string expected = "value2";
+            string expected = "value3";
+
             //Act
             items.Add("value1");
             items.Add("value2");
@@ -81,7 +96,7 @@ namespace CustomCollection_BuiltInListClass
         {
             //Arange
             Collection<string> items = new Collection<string>();
-            string expected = "value3";
+            string expected = "value4";
             //Act
             items.Add("value1");
             items.Add("value2");
@@ -106,43 +121,7 @@ namespace CustomCollection_BuiltInListClass
             items.Add("value3");
             items.Add("value4");
             items.Add("value5");
-            int actual = collection.count;
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void AddItemsToCollection_FiveItems_()
-        {
-            //Arange
-            Collection<string> items = new Collection<string>();
-            int expected = 5;
-
-            //Act
-            items.Add("value1");
-            items.Add("value2");
-            items.Add("value3");
-            items.Add("value4");
-            items.Add("value5");
-            int actual = collection.count;
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void AddItemsToCollection_FirstItem_CapacityFour()
-        {
-            //Arange
-            Collection<string> items = new Collection<string>();
-            int expected = 4;
-
-            //Act
-            items.Add("value1");
-            items.Add("value2");
-            items.Add("value3");
-            items.Add("value4");
-            items.Add("value5");
-            int actual = items.capacity;
+            int actual = collection.Count;
 
             //Assert
             Assert.AreEqual(expected, actual);
