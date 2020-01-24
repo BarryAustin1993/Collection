@@ -14,7 +14,8 @@ namespace MyCustomCollection
         T[] transferItemsArray;
         T item;
         public int Count;
-        public int capacity = 0;
+        public int capacity;
+        int index = 0;
 
         //Constructor
 
@@ -27,24 +28,26 @@ namespace MyCustomCollection
 
         public void Add(T item)
         {
-            Count++;
+            
             CapacityCheck();
-
+            Count++;
+            AddItemToIndex(item);
         }
-        public void CapacityCheck()
+        void CapacityCheck()
         {
-            if (Count > capacity)
+            if (Count == capacity)
             {
                 IncreaseTheCapacity();
-                T[] transferItemsArray = CreateArray();
+                transferItemsArray = CreateArray();
                 TransferArrayValues();
             }
         }
-        public void IncreaseTheCapacity()
+        void IncreaseTheCapacity()
         {
             if (capacity == 0)
             {
                 capacity = 4;
+                mainItemsArray = CreateArray();
             }
             else
             {
@@ -52,27 +55,32 @@ namespace MyCustomCollection
                 capacity = newCapacity;
             }
         }
-        public T[] CreateArray()
+        T[] CreateArray()
         {
-           T[] dummyarray = new T[] { };
+            T[] spaceHoldArray = new T[capacity];
             for (int i = 0; i < capacity; i++)
-            { 
-                dummyarray[i] = item;
+            {
+                spaceHoldArray[i] = item;
             }
-            return dummyarray;
+            return spaceHoldArray;
         }
-        public void TransferArrayValues()
-        {
-            for (int i = 0; i < capacity; i++)
+        void TransferArrayValues()
+        { 
+            for (int i = 0; i < Count; i++)
             {
                 transferItemsArray[i] = mainItemsArray[i];
             }
             mainItemsArray = transferItemsArray;
         }
+        void AddItemToIndex(T item)
+        {
+            mainItemsArray[index] = item;
+            index++;
+        }
         public T this[int i]
         {
-            get { return this[i]; }
-            set { this[i] = value; }
+            get { return mainItemsArray[i]; }
+            set { mainItemsArray[i] = value; }
         }
     }
 }
