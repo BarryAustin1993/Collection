@@ -184,9 +184,15 @@ namespace MyCustomCollection
         }
 
         //Member ToString Methods (CAN DO)
-        public string TwoChains()
+        public override string ToString()
         {
-            return "hello";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            for (int i = 0; i < count; i++)
+            {
+                stringBuilder.Append(mainItemsArray[i]);
+            }
+            return stringBuilder.ToString();
         }
     }
 }

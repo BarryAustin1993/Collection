@@ -370,7 +370,7 @@ namespace CustomCollection_BuiltInListClass
 
     }
     [TestClass]
-    public class TestTwoChainsMethodForCollection
+    public class TestToStringsMethodForCollection
     {
         [TestMethod]
         public void ConvertIntCollectionToString_SevenInts_OneStrings()
@@ -381,7 +381,7 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
             
-            string actual = collection.TwoChains();
+            string actual = collection.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -395,7 +395,7 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
 
-            string actual = collection.TwoChains();
+            string actual = collection.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -409,7 +409,7 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
 
-            string actual = collection.TwoChains();
+            string actual = collection.ToString();
 
             //Assert
             Assert.AreEqual(expected, actual);
