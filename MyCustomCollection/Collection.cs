@@ -42,7 +42,7 @@ namespace MyCustomCollection
 
         public void Add(T item)
         {
-            
+
             CapacityCheck();
             count++;
             AddItemToIndex(item);
@@ -79,7 +79,7 @@ namespace MyCustomCollection
             return spaceHoldArray;
         }
         void TransferArrayValues()
-        { 
+        {
             for (int i = 0; i < Count; i++)
             {
                 transferItemsArray[i] = mainItemsArray[i];
@@ -98,10 +98,44 @@ namespace MyCustomCollection
         }
 
         //Member Remove Methods (CAN DO)
-        public void Remove(T item)
+        public void Remove(T removeItem)
         {
-
+            compareItem(removeItem); 
+        }
+        void compareItem(T removeItem)
+        {
+            for (int i = 0; i < count; i++)      
+            {
+                if (mainItemsArray[i].Equals(removeItem))
+                {
+                    transferItemsArray = CreateArray();
+                    TransferRemainingValues(i);
+                    count--;
+                }
+                else
+                {
+                    //Exception message?!?!
+                }
+            }
+        }
+        void TransferRemainingValues(int i)
+        {
+            int k = 0;
+            for (int j = 0; j < count; j++)
+            {
+                if (j == i)
+                {
+                    k++;
+                    j--;
+                    i = -1;
+                }
+                else 
+                {
+                    transferItemsArray[j] = mainItemsArray[k];
+                    k++;
+                }
+                mainItemsArray = transferItemsArray;
+            }
         }
     }
-
 }

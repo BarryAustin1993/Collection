@@ -154,7 +154,7 @@ namespace CustomCollection_BuiltInListClass
         {
             //Arange
             Collection<string> items = new Collection<string>();
-            string expected = "";
+            string expected = "null";
 
             //Act
             items.Add("value1");
@@ -180,7 +180,7 @@ namespace CustomCollection_BuiltInListClass
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void RemoveItemFromCollection_FirstItem_Capacity0()
+        public void RemoveItemFromCollection_FirstItem_Capacity4()
         {
             //Arange
             Collection<string> items = new Collection<string>();
