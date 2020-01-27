@@ -404,7 +404,7 @@ namespace CustomCollection_BuiltInListClass
         public void ConvertstringsCollectionToString_FourStrings_OneString()
         {
             //Arange
-            Collection<string> collection = new Collection<String>() { "there", "is", "no", "flamingo"};
+            Collection<string> collection = new Collection<string>() { "there", "is", "no", "flamingo"};
             string expected = "thereisnoflamingo";
 
             //Act
@@ -415,5 +415,100 @@ namespace CustomCollection_BuiltInListClass
             Assert.AreEqual(expected, actual);
         }
 
+    }
+    [TestClass]
+    public class TestOverloadingPlusOperatorForCollection
+    {
+        [TestMethod]
+        public void CombineTwoCollections_One135Two246__Three135246()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            Collection<string> expected = new Collection<string> { "1", "3", "5", "2", "4", "6" };
+
+            //Act
+
+            Collection<string> actual = collection1 + collection2;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoCollections_One1357Two246__Three1357246()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            Collection<string> expected = new Collection<string> { "1", "3", "5", "7", "2", "4", "6" };
+
+            //Act
+
+            Collection<string> actual = collection1 + collection2;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoCollectionsInt_One1357Two246__Three1357246()
+        {
+            //Arange
+            Collection<int> collection1 = new Collection<int>() { 1, 3, 5, 7 };
+            Collection<int> collection2 = new Collection<int>() { 2, 4, 6, 8, 10 };
+            Collection<int> expected = new Collection<int> { 1, 3, 5, 7, 2, 4, 6 };
+
+            //Act
+
+            Collection<int> actual = collection1 + collection2;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoCollections_CountThreeAndThree__CountSix()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            int expected = 6;
+
+            //Act
+
+            Collection<string> collection3 = collection1 + collection2;
+            int actual = collection3.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoCollections_CapacityThreeAndThree__CapacaityEight()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            int expected = 8;
+
+            //Act
+
+            Collection<string> collection3 = collection1 + collection2;
+            int actual = collection3.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void CombineTwoCollections_OneEmptyList__WhatHappens()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { };
+            Collection<string> expected = new Collection<string> { "1", "3", "5" };
+
+            //Act
+            Collection<string> actual = collection1 + collection2;
+            
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

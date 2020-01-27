@@ -194,5 +194,21 @@ namespace MyCustomCollection
             }
             return stringBuilder.ToString();
         }
+        //Member Operator Overloading Methods (CAN DO)
+        public static Collection<T> operator +(Collection<T> one, Collection<T> two)
+        {
+            Collection<T> Sum = new Collection<T>();
+
+
+            foreach (T item in one)
+            {
+                Sum.Add{item};
+            }
+            foreach (T item in two)
+            {
+
+            }
+
+        }
     }
 }
