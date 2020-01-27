@@ -123,13 +123,9 @@ namespace MyCustomCollection
         public void Remove(T removeItem)
         {
             bool remove = compareItem(removeItem);
-            if (remove == true)
-            for (int i = 0; i < count; i++)
-            {              
-                transferItemsArray = CreateArray();
-                TransferRemainingValues(i);
-                count--;
-                mainItemsArray = transferItemsArray;
+            if ((remove == true))
+            {
+                RemoveFirstVariable(removeItem);
             }
             else
             {
@@ -146,6 +142,21 @@ namespace MyCustomCollection
                 }
             }
             return false;
+        }
+        void RemoveFirstVariable(T removeItem)
+        {
+            int removeOnce = 0;
+            for (int i = 0; i < count; i++)
+            {
+                if (mainItemsArray[i].Equals(removeItem) && (removeOnce < 1))
+                {
+                    removeOnce++;
+                    transferItemsArray = CreateArray();
+                    TransferRemainingValues(i);
+                    count--;
+                }
+            }
+            mainItemsArray = transferItemsArray;
         }
         void TransferRemainingValues(int i)
         {
@@ -175,7 +186,7 @@ namespace MyCustomCollection
         //Member ToString Methods (CAN DO)
         public string TwoChains()
         {
-
+            return "hello";
         }
     }
 }
