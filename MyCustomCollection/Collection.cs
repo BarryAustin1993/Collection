@@ -13,8 +13,22 @@ namespace MyCustomCollection
         T[] mainItemsArray;
         T[] transferItemsArray;
         T item;
-        public int Count;
-        public int capacity;
+        int count;
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+        int capacity;
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+        }
         int index = 0;
 
         //Constructor
@@ -24,13 +38,13 @@ namespace MyCustomCollection
             mainItemsArray = new T[capacity];
         }
 
-        //Member Methods (CAN DO)
+        //Member Add Methods (CAN DO)
 
         public void Add(T item)
         {
             
             CapacityCheck();
-            Count++;
+            count++;
             AddItemToIndex(item);
         }
         void CapacityCheck()
@@ -82,5 +96,12 @@ namespace MyCustomCollection
             get { return mainItemsArray[i]; }
             set { mainItemsArray[i] = value; }
         }
+
+        //Member Remove Methods (CAN DO)
+        public void Remove(T item)
+        {
+
+        }
     }
+
 }

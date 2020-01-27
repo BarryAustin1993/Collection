@@ -69,7 +69,7 @@ namespace CustomCollection_BuiltInListClass
 
             //Act
             items.Add("value1");
-            int actual = items.capacity;
+            int actual = items.Capacity;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -140,7 +140,7 @@ namespace CustomCollection_BuiltInListClass
             items.Add("value3");
             items.Add("value4");
             items.Add("value5");
-            int actual = items.capacity;
+            int actual = items.Capacity;
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -149,6 +149,146 @@ namespace CustomCollection_BuiltInListClass
     [TestClass]
     public class TestRemoveMethodForCollection
     {
+        [TestMethod]
+        public void RemoveItemFromCollection_FirstItem_index0()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "";
 
+            //Act
+            items.Add("value1");
+            items.Remove("value1");
+            string actual = items[0];
+            
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FirstItem_Count0()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            int expected = 0;
+
+            //Act
+            items.Add("value1");
+            items.Remove("value1");
+            int actual = items.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FirstItem_Capacity0()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            int expected = 4;
+
+            //Act
+            items.Add("value1");
+            items.Remove("value1");
+            int actual = items.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FiveItems_Index0()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value2";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Remove("value1");
+
+            string actual = items[0];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FiveItems_Index2()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value4";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Remove("value1");
+
+            string actual = items[2];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FiveItems_Index3()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value5";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Remove("value1");
+
+            string actual = items[3];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FiveItems_Count4()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            int expected = 4;
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Remove("value1");
+
+            int actual = items.Count;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemFromCollection_FiveItems_Capacity8()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            int expected = 8;
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Remove("value1");
+
+            int actual = items.Capacity;
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
+    
 }
