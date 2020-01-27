@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyCustomCollection
 {
-    public class Collection<T>
+    public class Collection<T> : IEnumerable
     {
         //Member Variables (HAS A)
 
@@ -161,6 +162,10 @@ namespace MyCustomCollection
                 }
 
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {jgf000
         }
     }
 }
