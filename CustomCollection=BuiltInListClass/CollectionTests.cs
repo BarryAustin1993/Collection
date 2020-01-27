@@ -289,6 +289,21 @@ namespace CustomCollection_BuiltInListClass
             //Assert
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void RemoveItemFromCollection_DoesNotExist_index0()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "";
+
+            //Act
+            items.Remove("value1");
+            string actual = items[0];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
     
 }
