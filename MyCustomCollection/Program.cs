@@ -9,16 +9,12 @@ namespace MyCustomCollection
     class Program
     {
         static void Main(string[] args)
-      {
-            Collection<string> collection = new Collection<string>();
-            collection.Add("0");
-            collection.Add("1");
-            collection.Remove("1");
-            collection.Add("2");
-            collection.Add("3");
-            collection.Add("4");
-            collection.Add("5");
+        {
+            Collection<int> collection = new Collection<int>() { 1, 2, 3, 4, 5, 6, 7 };
+        
             
+
+          
         }
     }
 }

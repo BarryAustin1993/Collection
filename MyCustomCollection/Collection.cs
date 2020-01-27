@@ -39,8 +39,34 @@ namespace MyCustomCollection
             mainItemsArray = new T[capacity];
         }
 
-        //Member Add Methods (CAN DO)
+        //Member Methods (CAN DO)
+        public T this[int i]
+        {
+            get
+            {
+                if (i < Count)
+                {
+                    return mainItemsArray[i];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Whoops, try again!");
+                }
+            }
+            set
+            {
+                mainItemsArray[i] = value;
+            }
+        }
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < count; i++)
+            {
+                yield return mainItemsArray[i];
+            }
+        }
 
+        //Member Add Methods (CAN DO)
         public void Add(T item)
         {
 
@@ -92,52 +118,34 @@ namespace MyCustomCollection
             mainItemsArray[index] = item;
             index++;
         }
-        public T this[int i]
-        {
-            get
-            {
-                if (i < Count)
-                {
-                    return mainItemsArray[i];
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException("Whoops, try again!");
-                }
-            }
-            set
-            { 
-                mainItemsArray[i] = value; 
-            }
-        }
 
         //Member Remove Methods (CAN DO)
         public void Remove(T removeItem)
         {
-            compareItem(removeItem);
+            bool remove = compareItem(removeItem);
+            if (remove == true)
+            for (int i = 0; i < count; i++)
+            {              
+                transferItemsArray = CreateArray();
+                TransferRemainingValues(i);
+                count--;
+                mainItemsArray = transferItemsArray;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Whoops, there is no flamingo in there!");
+            }
         }
-        void compareItem(T removeItem)
+        bool compareItem(T removeItem)
         {
-            int singletime = 0;
             for (int i = 0; i < count; i++)
             {
-                if (mainItemsArray[i].Equals(removeItem) && singletime < 1)
+                if (mainItemsArray[i].Equals(removeItem))
                 {
-                    transferItemsArray = CreateArray();
-                    TransferRemainingValues(i);
-                    count--;
-                    mainItemsArray = transferItemsArray;
-                    singletime = 1;
-                }
-                else if (singletime == 1)
-                {
-                    break;
-                }
-                else
-                {
-                    //throw new ArgumentOutOfRangeException("Whoops, there is no Flamingo here!");
+                    return true;
                 }
             }
+            return false;
         }
         void TransferRemainingValues(int i)
         {
@@ -164,8 +172,10 @@ namespace MyCustomCollection
             }
         }
 
-        public IEnumerator GetEnumerator()
-        {jgf000
+        //Member ToString Methods (CAN DO)
+        public string TwoChains()
+        {
+
         }
     }
 }

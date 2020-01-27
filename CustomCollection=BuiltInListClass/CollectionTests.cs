@@ -10,7 +10,7 @@ namespace CustomCollection_BuiltInListClass
         //[TestMethod]
         //public void AddItemsToCollection_FiveItems_Index01234()
         //{
-            //Arange
+        //Arange
         //    Collection<string> items = new Collection<string>();
         //    string[] value1 = { "item1", "item2", "item3", "item4", "item5" };
 
@@ -361,8 +361,55 @@ namespace CustomCollection_BuiltInListClass
             items.Add("value4");
             items.Add("value5");
             items.Add("value6");
-           
+
             string actual = items[4];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+    }
+    [TestClass]
+    public class TestTwoChainsMethodForCollection
+    {
+        [TestMethod]
+        public void ConvertIntCollectionToString_SevenInts_OneStrings()
+        {
+            //Arange
+            Collection<int> collection = new Collection<int>() { 1, 2, 3, 4, 5, 6, 7, 8};
+            string expected = "12345678";
+
+            //Act
+            
+            string actual = collection.TwoChains();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ConvertIntCollectionToString_PartialCapactiy_OneStrings()
+        {
+            //Arange
+            Collection<int> collection = new Collection<int>() {1, 2, 3};
+            string expected = "123";
+
+            //Act
+
+            string actual = collection.TwoChains();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ConvertstringsCollectionToString_FourStrings_OneString()
+        {
+            //Arange
+            Collection<string> collection = new Collection<String>() { "there", "is", "no", "flamingo"};
+            string expected = "thereisnoflamingo";
+
+            //Act
+
+            string actual = collection.TwoChains();
 
             //Assert
             Assert.AreEqual(expected, actual);
