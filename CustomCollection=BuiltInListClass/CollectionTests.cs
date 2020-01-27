@@ -150,19 +150,18 @@ namespace CustomCollection_BuiltInListClass
     public class TestRemoveMethodForCollection
     {
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveItemFromCollection_FirstItem_index0()
         {
             //Arange
             Collection<string> items = new Collection<string>();
-            string expected = "null";
 
             //Act
             items.Add("value1");
             items.Remove("value1");
             string actual = items[0];
-            
+
             //Assert
-            Assert.AreEqual(expected, actual);
         }
         [TestMethod]
         public void RemoveItemFromCollection_FirstItem_Count0()
@@ -283,27 +282,91 @@ namespace CustomCollection_BuiltInListClass
             items.Add("value3");
             items.Add("value4");
             items.Add("value5");
+            items.Add("value6");
             items.Remove("value1");
 
             int actual = items.Capacity;
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void RemoveItemFromCollection_DoesNotExist_index0()
         {
             //Arange
             Collection<string> items = new Collection<string>();
-            string expected = "";
 
             //Act
             items.Remove("value1");
             string actual = items[0];
 
             //Assert
+        }
+        [TestMethod]
+        public void RemoveMultipleItemsFromCollection_7Items_index3()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value6";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Add("value6");
+            items.Add("value7");
+            items.Remove("value1");
+            items.Remove("value3");
+            string actual = items[3];
+
+            //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void RemoveItemWithTwinInCollection_7Items_index3()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value2";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Add("value6");
+            items.Add("value2");
+            items.Remove("value2");
+            string actual = items[5];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void RemoveItemBeforeAddingMore_7Items_index()
+        {
+            //Arange
+            Collection<string> items = new Collection<string>();
+            string expected = "value6";
+
+            //Act
+            items.Add("value1");
+            items.Add("value2");
+            items.Remove("value2");
+            items.Add("value3");
+            items.Add("value4");
+            items.Add("value5");
+            items.Add("value6");
+           
+            string actual = items[4];
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
-    
 }

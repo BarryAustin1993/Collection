@@ -93,28 +93,48 @@ namespace MyCustomCollection
         }
         public T this[int i]
         {
-            get { return mainItemsArray[i]; }
-            set { mainItemsArray[i] = value; }
+            get
+            {
+                if (i < Count)
+                {
+                    return mainItemsArray[i];
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException("Whoops, try again!");
+                }
+            }
+            set
+            { 
+                mainItemsArray[i] = value; 
+            }
         }
 
         //Member Remove Methods (CAN DO)
         public void Remove(T removeItem)
         {
-            compareItem(removeItem); 
+            compareItem(removeItem);
         }
         void compareItem(T removeItem)
         {
-            for (int i = 0; i < count; i++)      
+            int singletime = 0;
+            for (int i = 0; i < count; i++)
             {
-                if (mainItemsArray[i].Equals(removeItem))
+                if (mainItemsArray[i].Equals(removeItem) && singletime < 1)
                 {
                     transferItemsArray = CreateArray();
                     TransferRemainingValues(i);
                     count--;
+                    mainItemsArray = transferItemsArray;
+                    singletime = 1;
+                }
+                else if (singletime == 1)
+                {
+                    break;
                 }
                 else
                 {
-                    //Exception message?!?!
+                    //throw new ArgumentOutOfRangeException("Whoops, there is no Flamingo here!");
                 }
             }
         }
@@ -129,12 +149,17 @@ namespace MyCustomCollection
                     j--;
                     i = -1;
                 }
-                else 
+                else if (k == count)
+                {
+                    index--;
+                    break;
+                }
+                else
                 {
                     transferItemsArray[j] = mainItemsArray[k];
                     k++;
                 }
-                mainItemsArray = transferItemsArray;
+
             }
         }
     }
