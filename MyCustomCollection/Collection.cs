@@ -183,7 +183,7 @@ namespace MyCustomCollection
             }
         }
 
-        //Member ToString Methods (CAN DO)
+        //Member ToString/Zip Methods (CAN DO)
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
@@ -193,6 +193,32 @@ namespace MyCustomCollection
                 stringBuilder.Append(mainItemsArray[i]);
             }
             return stringBuilder.ToString();
+        }
+        public static Collection<T> Zip(Collection<T> one, Collection<T> two)
+        {
+            Collection<T> zipped = new Collection<T>();
+            int i = 0;
+            bool ONE = true;
+            bool TWO = true;
+            do
+            {
+                if ((i+1) <= one.count)
+                {
+                    zipped.Add(one[i]);
+                    ONE = true;
+                }
+                else { ONE = false; }
+
+                if ((i+1) <= two.count)
+                {
+                    zipped.Add(two[i]);
+                    TWO = true;
+                }
+                else{ TWO = false; }
+                i++;
+            }
+            while ((ONE == true) || (TWO == true));
+           return zipped;
         }
 
         //Member Operator Overloading Methods (CAN DO)

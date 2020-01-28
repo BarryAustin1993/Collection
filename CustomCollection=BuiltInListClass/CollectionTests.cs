@@ -376,11 +376,11 @@ namespace CustomCollection_BuiltInListClass
         public void ConvertIntCollectionToString_SevenInts_OneStrings()
         {
             //Arange
-            Collection<int> collection = new Collection<int>() { 1, 2, 3, 4, 5, 6, 7, 8};
+            Collection<int> collection = new Collection<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
             string expected = "12345678";
 
             //Act
-            
+
             string actual = collection.ToString();
 
             //Assert
@@ -390,7 +390,7 @@ namespace CustomCollection_BuiltInListClass
         public void ConvertIntCollectionToString_PartialCapactiy_OneStrings()
         {
             //Arange
-            Collection<int> collection = new Collection<int>() {1, 2, 3};
+            Collection<int> collection = new Collection<int>() { 1, 2, 3 };
             string expected = "123";
 
             //Act
@@ -404,7 +404,7 @@ namespace CustomCollection_BuiltInListClass
         public void ConvertstringsCollectionToString_FourStrings_OneString()
         {
             //Arange
-            Collection<string> collection = new Collection<string>() { "there", "is", "no", "flamingo"};
+            Collection<string> collection = new Collection<string>() { "there", "is", "no", "flamingo" };
             string expected = "thereisnoflamingo";
 
             //Act
@@ -458,7 +458,7 @@ namespace CustomCollection_BuiltInListClass
             string expected = "1357246810";
 
             //Act
-            
+
             Collection<int> actual = collection1 + collection2;
             string actually = actual.ToString();
             //Assert
@@ -585,6 +585,90 @@ namespace CustomCollection_BuiltInListClass
             //Act
             Collection<string> actually = collection1 - collection2;
             int actual = actually.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+    }
+    [TestClass]
+    public class TestZipMethodForCollection
+    {
+        [TestMethod]
+        public void ZipTwoCollections_One135Two246__Three123456()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            Collection<string> collection3 = new Collection<string>();
+            string expected = "123456";
+
+            //Act
+            collection3 = Collection<string>.Zip(collection1, collection2);
+            string actual = collection3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ZipTwoCollections_One135Two246810__Three123456()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6", "8", "10" };
+            Collection<string> collection3 = new Collection<string>();
+            string expected = "123456810";
+
+            //Act
+            collection3 = Collection<string>.Zip(collection1, collection2);
+            string actual = collection3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ZipTwoCollections_One13579Two__Three13579()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { };
+            Collection<string> collection3 = new Collection<string>();
+            string expected = "13579";
+
+            //Act
+            collection3 = Collection<string>.Zip(collection1, collection2);
+            string actual = collection3.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ZipTwoCollections_One13579Two246__Count()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
+            Collection<string> collection3 = new Collection<string>();
+            int expected = 8;
+
+            //Act
+            collection3 = Collection<string>.Zip(collection1, collection2);
+            int actual = collection3.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ZipTwoCollections_One13579Two2468__Capacity()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { "2", "4", "6", "8" };
+            Collection<string> collection3 = new Collection<string>();
+            int expected = 16;
+
+            //Act
+            collection3 = Collection<string>.Zip(collection1, collection2);
+            int actual = collection3.Capacity;
 
             //Assert
             Assert.AreEqual(expected, actual);
