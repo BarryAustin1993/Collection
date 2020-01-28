@@ -511,4 +511,83 @@ namespace CustomCollection_BuiltInListClass
             Assert.AreEqual(expected, actually);
         }
     }
+    [TestClass]
+    public class TestOverloadingMinusOperatorForCollection
+    {
+        [TestMethod]
+        public void SubtractTwoCollections_One135Two216__Three35()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { "2", "1", "6" };
+            string expected = "35";
+
+            //Act
+            Collection<string> actually = collection1 - collection2;
+            string actual = actually.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void SubtractTwoCollections_One135Two__Three135()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
+            Collection<string> collection2 = new Collection<string>() { };
+            string expected = "135";
+
+            //Act
+            Collection<string> actually = collection1 - collection2;
+            string actual = actually.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void SubtractTwoCollections_One13579Two357__Three19()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { "3", "5", "7" };
+            string expected = "19";
+
+            //Act
+            Collection<string> actually = collection1 - collection2;
+            string actual = actually.ToString();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void SubtractTwoCollections_One13579Two357__Count2()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { "3", "5", "7" };
+            int expected = 2;
+
+            //Act
+            Collection<string> actually = collection1 - collection2;
+            int actual = actually.Count;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void SubtractTwoCollections_One13579Two357__Capacity8()
+        {
+            //Arange
+            Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7", "9" };
+            Collection<string> collection2 = new Collection<string>() { "3", "5", "7" };
+            int expected = 8;
+
+            //Act
+            Collection<string> actually = collection1 - collection2;
+            int actual = actually.Capacity;
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+    }
 }

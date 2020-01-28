@@ -132,7 +132,7 @@ namespace MyCustomCollection
                 throw new ArgumentOutOfRangeException("Whoops, there is no flamingo in there!");
             }
         }
-        bool compareItem(T removeItem)
+        public bool compareItem(T removeItem)
         {
             for (int i = 0; i < count; i++)
             {
@@ -194,6 +194,7 @@ namespace MyCustomCollection
             }
             return stringBuilder.ToString();
         }
+
         //Member Operator Overloading Methods (CAN DO)
         public static Collection<T> operator +(Collection<T> one, Collection<T> two)
         {
@@ -206,6 +207,25 @@ namespace MyCustomCollection
             foreach (T item in two)
             {
                 Sum.Add(item);
+            }
+            return Sum;
+        }
+        public static Collection<T> operator -(Collection<T> one, Collection<T> two)
+        {
+            Collection<T> Sum = new Collection<T>();
+
+            foreach (T item in one)
+            {
+                Sum.Add(item);
+            }
+            foreach (T item in two)
+            {
+                bool itemPresent = false;
+                itemPresent = Sum.compareItem(item);
+                if (itemPresent == true)
+                {
+                    Sum.Remove(item);
+                }
             }
             return Sum;
         }
