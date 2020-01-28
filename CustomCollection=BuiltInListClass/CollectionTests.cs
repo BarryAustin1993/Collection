@@ -425,14 +425,14 @@ namespace CustomCollection_BuiltInListClass
             //Arange
             Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
             Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
-            Collection<string> expected = new Collection<string> { "1", "3", "5", "2", "4", "6" };
+            string expected = "135246";
 
             //Act
-
             Collection<string> actual = collection1 + collection2;
+            string actually = actual.ToString();
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actually);
         }
         [TestMethod]
         public void CombineTwoCollections_One1357Two246__Three1357246()
@@ -440,14 +440,14 @@ namespace CustomCollection_BuiltInListClass
             //Arange
             Collection<string> collection1 = new Collection<string>() { "1", "3", "5", "7" };
             Collection<string> collection2 = new Collection<string>() { "2", "4", "6" };
-            Collection<string> expected = new Collection<string> { "1", "3", "5", "7", "2", "4", "6" };
+            string expected = "1357246";
 
             //Act
-
             Collection<string> actual = collection1 + collection2;
+            string actually = actual.ToString();
 
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actually);
         }
         [TestMethod]
         public void CombineTwoCollectionsInt_One1357Two246__Three1357246()
@@ -455,14 +455,14 @@ namespace CustomCollection_BuiltInListClass
             //Arange
             Collection<int> collection1 = new Collection<int>() { 1, 3, 5, 7 };
             Collection<int> collection2 = new Collection<int>() { 2, 4, 6, 8, 10 };
-            Collection<int> expected = new Collection<int> { 1, 3, 5, 7, 2, 4, 6 };
+            string expected = "1357246810";
 
             //Act
-
+            
             Collection<int> actual = collection1 + collection2;
-
+            string actually = actual.ToString();
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actually);
         }
         [TestMethod]
         public void CombineTwoCollections_CountThreeAndThree__CountSix()
@@ -502,13 +502,13 @@ namespace CustomCollection_BuiltInListClass
             //Arange
             Collection<string> collection1 = new Collection<string>() { "1", "3", "5" };
             Collection<string> collection2 = new Collection<string>() { };
-            Collection<string> expected = new Collection<string> { "1", "3", "5" };
+            string expected = "135";
 
             //Act
             Collection<string> actual = collection1 + collection2;
-            
+            string actually = actual.ToString();
             //Assert
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expected, actually);
         }
     }
 }

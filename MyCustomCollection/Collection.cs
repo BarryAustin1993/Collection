@@ -199,16 +199,15 @@ namespace MyCustomCollection
         {
             Collection<T> Sum = new Collection<T>();
 
-
             foreach (T item in one)
             {
-                Sum.Add{item};
+                Sum.Add(item);
             }
             foreach (T item in two)
             {
-
+                Sum.Add(item);
             }
-
+            return Sum;
         }
     }
 }
